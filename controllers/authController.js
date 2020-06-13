@@ -855,7 +855,7 @@ exports.resetPassword = (req, res) => {
                                                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                                             <tbody>
                                                                                 <tr>
-                                                                                    <td><a href="http://sosmed-app.herokuapp.com/reset/${token}" target="_blank">Reset Password</a></td>
+                                                                                    <td><a href="https://sosmed-app.herokuapp.com/reset/${token}" target="_blank">Reset Password</a></td>
                                                                                 </tr>
                                                                             </tbody>
                                                                         </table>

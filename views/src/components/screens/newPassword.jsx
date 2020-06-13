@@ -52,7 +52,7 @@ const SignIn = () => {
     <div className="valign-wrapper row login-box">
       <div className="col card s10 pull-s1 pull-m3 l4 pull-l4">
         <div className="card-content">
-          <span className="card-title">Sign In</span>
+          <span className="card-title">Update Password</span>
           <div className="row">
             <div className="input-field col s12">
               <label htmlFor="password">Password </label>
