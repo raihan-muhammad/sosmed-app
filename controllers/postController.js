@@ -28,7 +28,8 @@ exports.createPost = catchAsync(async (req, res) => {
 exports.getAllPosts = catchAsync(async (req, res) => {
   posts = await Post.find()
     .populate("postedBy", "_id name")
-    .populate("comments.postedBy", "_id name");
+    .populate("comments.postedBy", "_id name")
+    .sort("-createdAt");
   res.status(200).json({
     status: "Success",
     posts,
@@ -40,7 +41,8 @@ exports.getPostsFollowing = catchAsync(async (req, res) => {
     postedBy: { $in: req.user.following },
   })
     .populate("postedBy", "_id name")
-    .populate("comments.postedBy", "_id name");
+    .populate("comments.postedBy", "_id name")
+    .sort("-createdAt");
   res.status(200).json({
     status: "Success",
     posts,

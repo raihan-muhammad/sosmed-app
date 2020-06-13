@@ -82,3 +82,11 @@ exports.updateMe = async (req, res) => {
     }
   );
 };
+
+exports.searchUsers = catchAsync(async (req, res) => {
+  let userPattern = new RegExp("^" + req.body.query);
+  const user = await User.find({ email: { $regex: userPattern } }).select(
+    "_id email"
+  );
+  res.status(200).json({ user });
+});

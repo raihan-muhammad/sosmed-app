@@ -13,17 +13,20 @@ const Post = () => {
     const addPost = async () => {
       try {
         if (url) {
-          const requestData = await fetch(`/api/v1/posts`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-            },
-            body: JSON.stringify({
-              body,
-              image: url,
-            }),
-          });
+          const requestData = await fetch(
+            `http://localhost:5500/api/v1/posts`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+              },
+              body: JSON.stringify({
+                body,
+                image: url,
+              }),
+            }
+          );
           const resultData = await requestData.json();
           if (resultData.error) {
             M.toast({

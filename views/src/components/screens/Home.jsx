@@ -14,7 +14,7 @@ const Home = () => {
   const { state } = useContext(UserContext);
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`/api/v1/posts`, {
+      const res = await fetch(`http://localhost:5500/api/v1/posts`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },
@@ -30,7 +30,7 @@ const Home = () => {
     try {
       setCekUnlike("ok");
       setCekLike("");
-      const res = await fetch(`/api/v1/posts/like`, {
+      const res = await fetch(`http://localhost:5500/api/v1/posts/like`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -59,7 +59,7 @@ const Home = () => {
     try {
       setCekLike("ok");
       setCekUnlike("");
-      const res = await fetch(`/api/v1/posts/unlike`, {
+      const res = await fetch(`http://localhost:5500/api/v1/posts/unlike`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -86,17 +86,20 @@ const Home = () => {
 
   const comment = async (text, postId) => {
     try {
-      const reqComment = await fetch(`/api/v1/posts/comment`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-        },
-        body: JSON.stringify({
-          postId,
-          text,
-        }),
-      });
+      const reqComment = await fetch(
+        `http://localhost:5500/api/v1/posts/comment`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+          },
+          body: JSON.stringify({
+            postId,
+            text,
+          }),
+        }
+      );
       const resComment = await reqComment.json();
       const newData = data.map((item) => {
         if (item._id === resComment._id) {
@@ -114,12 +117,15 @@ const Home = () => {
 
   const deletePost = async (postId) => {
     try {
-      const reqDelete = await fetch(`/api/v1/posts/delete-post/${postId}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-        },
-      });
+      const reqDelete = await fetch(
+        `http://localhost:5500/api/v1/posts/delete-post/${postId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+          },
+        }
+      );
       const resDelete = await reqDelete.json();
       console.log(resDelete);
       const newData = data.filter((item) => {
@@ -300,7 +306,7 @@ const Home = () => {
             </div>
             <figure className="card-profile-image">
               <img
-                src={profile}
+                src={state ? state.photo : "loading..."}
                 alt="profile image"
                 className="circle z-depth-2 responsive-img activator-profile"
               />

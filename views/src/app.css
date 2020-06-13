@@ -132,6 +132,12 @@
   display: flex;
 }
 
+.card-profile-image img {
+  max-width: 150px !important;
+  width: 150px !important;
+  height: 150px !important;
+}
+
 @media screen and (max-width: 550px) {
   .card-profile-home {
     display: none;

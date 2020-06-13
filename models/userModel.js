@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
     required: [true, "Please provide your password"],
     minlength: 8,
   },
+  resetToken: {
+    type: String,
+  },
+  expiredToken: Date,
   photo: {
     type: String,
     default:
