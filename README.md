@@ -38,11 +38,13 @@ This URL has the application deployed in
 
 ## How to use it
 
+You can open the root folder in cmd or terminal and write this
+
 ```bash
 npm install 
 ```
 
-You need to create the config.env file in the root folder and add some environment, including
+And you need to create the config.env file in the root folder and add some environment, including
 
 ```bash
 NODE_ENV= node env what you want
