@@ -15,14 +15,11 @@ const Profile = () => {
   const [showBtn, setShowBtn] = useState("");
   useEffect(() => {
     const myProfile = async () => {
-      const reqProfile = await fetch(
-        `http://localhost:5500/api/v1/posts/my-post`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-          },
-        }
-      );
+      const reqProfile = await fetch(`/api/v1/posts/my-post`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      });
       const result = await reqProfile.json();
       setPosts(result.posts);
       setLoading("aaa");
@@ -51,23 +48,20 @@ const Profile = () => {
         const resultImage = await requestImage.json();
         setUrl(resultImage.secure_url);
 
-        const reqUpdateProfile = await fetch(
-          `http://localhost:5500/api/v1/users/updateMe`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-            },
-            body: JSON.stringify({
-              name: name ? name : state.name,
-              photo: resultImage.secure_url
-                ? resultImage.secure_url
-                : state.photo,
-              tagline: tagline ? tagline : state.tagline,
-            }),
-          }
-        );
+        const reqUpdateProfile = await fetch(`/api/v1/users/updateMe`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+          },
+          body: JSON.stringify({
+            name: name ? name : state.name,
+            photo: resultImage.secure_url
+              ? resultImage.secure_url
+              : state.photo,
+            tagline: tagline ? tagline : state.tagline,
+          }),
+        });
         const resUpdateProfile = reqUpdateProfile.json();
         console.log(resUpdateProfile);
         window.location.reload();
@@ -88,21 +82,18 @@ const Profile = () => {
         classes: "blue darken-3",
       });
 
-      const reqUpdateProfile = await fetch(
-        `http://localhost:5500/api/v1/users/updateMe`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-          },
-          body: JSON.stringify({
-            name: name ? name : state.name,
-            photo: state.photo,
-            tagline: tagline ? tagline : state.tagline,
-          }),
-        }
-      );
+      const reqUpdateProfile = await fetch(`/api/v1/users/updateMe`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+        body: JSON.stringify({
+          name: name ? name : state.name,
+          photo: state.photo,
+          tagline: tagline ? tagline : state.tagline,
+        }),
+      });
       const resUpdateProfile = reqUpdateProfile.json();
       console.log(resUpdateProfile);
       const up = localStorage.setItem(

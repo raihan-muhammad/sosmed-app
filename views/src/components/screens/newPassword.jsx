@@ -15,7 +15,7 @@ const SignIn = () => {
         M.toast({ html: "Password min 8 character!", classes: "red darken-4" });
         return;
       }
-      const base_url = "http://localhost:5500/api/v1/auth";
+      const base_url = "/api/v1/auth";
       const send = await fetch(`${base_url}/new-password`, {
         method: "POST",
         headers: {

@@ -76,7 +76,7 @@ const Navbar = () => {
 
   const fetchUser = async (query) => {
     setSearch(query);
-    const req = await fetch(`http://localhost:5500/api/v1/users/search-users`, {
+    const req = await fetch(`/api/v1/users/search-users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

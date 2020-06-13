@@ -15,10 +15,10 @@ const Profile = () => {
   const [showFollow, setShowFollow] = useState(
     state ? !state.following.includes(userId) : true
   );
-  const baseapi = "http://localhost:5500";
+
   useEffect(() => {
     const myProfile = async () => {
-      const reqProfile = await fetch(`${baseapi}/api/v1/users/${userId}`, {
+      const reqProfile = await fetch(`/api/v1/users/${userId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },
@@ -34,7 +34,7 @@ const Profile = () => {
   }, []);
 
   const followUser = async () => {
-    const reqFollow = await fetch(`${baseapi}/api/v1/users/follow`, {
+    const reqFollow = await fetch(`/api/v1/users/follow`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const Profile = () => {
   };
 
   const unfollowUser = async () => {
-    const reqUnfollow = await fetch(`${baseapi}/api/v1/users/unfollow`, {
+    const reqUnfollow = await fetch(`/api/v1/users/unfollow`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
