@@ -32,6 +32,11 @@ const Navbar = () => {
     if (state) {
       return (
         <Fragment>
+          <li style={{ cursor: "pointer" }}>
+            <i data-target="modal1" className="material-icons modal-trigger">
+              search
+            </i>
+          </li>
           <li>
             <Link to="/profile"> Profile</Link>
           </li>
@@ -97,14 +102,6 @@ const Navbar = () => {
               </a>
             ) : null}
             <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li style={{ cursor: "pointer" }}>
-                <i
-                  data-target="modal1"
-                  className="material-icons modal-trigger"
-                >
-                  search
-                </i>
-              </li>
               {renderList()}
             </ul>
             <div id="modal1" className="modal" ref={searchModal}>
