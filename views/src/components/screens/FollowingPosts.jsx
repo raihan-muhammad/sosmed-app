@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import M from "materialize-css";
 import bgProfile from "../../assets/bg-profile.jpg";
-import profile from "../../assets/avatar.jpg";
 import { UserContext } from "../../App";
 
 const Home = () => {
@@ -300,7 +299,7 @@ const Home = () => {
             </div>
             <figure className="card-profile-image">
               <img
-                src={profile}
+                src={state ? state.photo : "loading..."}
                 alt="profile image"
                 className="circle z-depth-2 responsive-img activator-profile"
               />
